@@ -10,7 +10,7 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <img height="80px" src="https://buenosaires.gob.ar/sites/default/files/media/image/2022/06/16/330682881a2d085e5f614b4b0b3b24aacb37ffce.png"></img>
+                        <img height="80px" src="https://news.microsoft.com/wp-content/uploads/prod/sites/113/2017/06/Microsoft-logo_rgb_c-gray.png"></img>
                         <h3 className={styles.headerTitle}></h3>
                     </Link>
                     <nav>
@@ -41,7 +41,7 @@ const Layout = () => {
                         </ul>
     */}
                     </nav>
-                    <h4 className={styles.headerRightText}>Chat Boti</h4>
+                    <h4 className={styles.headerRightText}>Chat On Your Data</h4>
                 </div>
             </header>
 

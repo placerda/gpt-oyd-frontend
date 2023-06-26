@@ -47,10 +47,10 @@ Update the blob storage path in the getCitationFilePath function to point to whe
 
 file: ```frontend/src/api/api.ts```
 
-Example: storage account ```177960botistorage``` and storage container ```boti```
+Example: storage account ```177960botistorage``` and storage container ```documents```
 ```
 export function getCitationFilePath(citation: string): string {
-    return `https://177960botistorage.blob.core.windows.net/boti/${citation}`;
+    return `https://177960botistorage.blob.core.windows.net/documents/${citation}`;
 }
 ```
 
@@ -61,13 +61,13 @@ Update page's title
 file: ```frontend/src/pages/layout/Layout.tsx```
 
 ```
-<h4 className={styles.headerRightText}>Chat Boti</h4>
+<h4 className={styles.headerRightText}>Chat On Your Data/h4>
 ```
 
 file: ```frontend/src/pages/layout/index.html```
 
 ```
-<title>Chat Boti | Demo</title>
+<title>Chat Chat On Your Data | Demo</title>
 ```
 
 **3) Logo**
@@ -79,7 +79,7 @@ file: ```frontend/src/pages/layout/Layout.tsx```
 Example:
 ```
 <Link to="/" className={styles.headerTitleContainer}>
-    <img height="80px" src="https://buenosaires.gob.ar/sites/default/files/media/image/2022/06/16/330682881a2d085e5f614b4b0b3b24aacb37ffce.png"></img>
+    <img height="80px" src="https://www.yourdomain.com/yourlogo.png"></img>
     <h3 className={styles.headerTitle}></h3>
 </Link>
 ```
