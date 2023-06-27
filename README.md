@@ -1,6 +1,26 @@
 # gpt on your data frontend
 
-## Build process
+## Quickstart - Deploy Frontend Web App
+
+**1) Pre-reqs**
+
+- Orchestrator deployed: [Orchestrator](https://github.com/placerda/gpt-oyd-orchestrator).
+- Web App (App Service) with Python 3.10 runtime.
+- Azure Speech Service.
+
+**2) Set Startup Command**
+
+In Azure Portal > Web App > Configuration > General Settings > Startup Command add:
+
+```python ./app.py```
+
+**3) Set Application Settings**
+
+In Azure Portal > Web App > Configuration > Application Settings:
+
+Add the application settings listed on [.env.template](.env.template), adjusting values accordingly to your environment.
+
+**4) Build App**
 
 Everytime you change frontend code you need to build it before a new deployment:
 
@@ -10,34 +30,15 @@ npm install
 npm run build
 ```
 
-## Deploy to Azure
-
-**1) Deployment pre-requirements**
-
-- Deploy the Chatbot orchestrator in a Function App.
-
-- Provision an Azure Speech Service for the speech to text and text to speech part.
-
-**2) Create Web App**
-
-Create a Web App (App Service) with Python 3.10 runtime.
-
-**3) Set Startup Command**
-
-In Azure Portal > Web App > Configuration > General Settings > Startup Command add:
-
-```python ./app.py```
-
-**4) Set Application Settings**
-
-In Azure Portal > Web App > Configuration > Application Settings:
-
-Add the application settings listed on [.env.template](.env.template), adjusting values accordingly to your environment.
-
-**5) Deploy to Azure** (tthis step can be repeated whenever you make changes to the front)
+**5) Deploy to Azure** 
 
 In VSCode with [Azure Web App Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) go to the *Azure* Window, reveal your Web App in the resource explorer, right-click it then select *Deploy to Web App*.
 
+**6) Deploy locally - Optional**
+
+```
+./start.sh
+```
 
 ## Frontend customizations
 
@@ -84,7 +85,29 @@ Example:
 </Link>
 ```
 
-**4) Speech Synthesis**
+**4) Home page text**
+
+file: ```frontend/src/pages/chat/Chat.tsx```
+```
+                    <div className={styles.chatInput}>
+                        <QuestionInput
+                            clearOnSend
+                            placeholder="Escriba aquí su pregunta"
+                            disabled={isLoading}
+                            onSend={question => makeApiRequestGpt(question)}
+                        />
+                    </div>
+```
+
+file: ```frontend/src/components/ClearChatButton.tsx```
+```
+        <div className={`${styles.container} ${className ?? ""} ${disabled && styles.disabled}`} onClick={onClick}>
+            <Delete24Regular />
+            <Text>{"Reiniciar conversación"}</Text>
+        </div>
+```
+
+**5) Speech Synthesis**
 
 To enable speech synthesis change speechSynthesisEnabled variable to true.
 
